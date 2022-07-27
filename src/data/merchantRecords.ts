@@ -18,7 +18,7 @@ export const merchantRecords = [
   {
     id: "id" + new Date().getTime(),
     name: "TinselTown",
-    item: "tinsel",
+    item: "Tinsel",
     cryptoCurrencyForPayment: "ETH",
     amountInvoicedAsCurrency: 45000,
     currencyCode: "USD",
