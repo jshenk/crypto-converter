@@ -43,9 +43,9 @@ export const RecordTable = () => {
     let editedRecord: any = {};
     if (name) editedRecord.name = name;
     if (item) editedRecord.item = item;
-    if (cryptoCurrencyForPayment != "")
+    if (cryptoCurrencyForPayment !== "")
       editedRecord.cryptoCurrencyForPayment = cryptoCurrencyForPayment;
-    if (amountInvoicedAsCurrency != "")
+    if (amountInvoicedAsCurrency !== "")
       editedRecord.amountInvoicedAsCurrency = amountInvoicedAsCurrency;
 
     setRecords((currenRecords) =>
