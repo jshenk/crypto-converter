@@ -22,57 +22,57 @@ export const InlineRecordForm = ({
         setViewState("display");
       }}
       id={id}
-      className="flex items-center"
+      className="grid grid-cols-8"
     >
-      <td className={"p-3 text-sm text-gray-800 min-w-[160px]"}>
+      <div className={"p-3 text-sm text-gray-800 "}>
         <input
           type="text"
           name={"name"}
           placeholder={name}
           className={"w-full py-1 px-2 rounded"}
         />
-      </td>
-      <td className={"p-3 text-sm text-gray-800 min-w-[160px]"}>
+      </div>
+      <div className={"p-3 text-sm text-gray-800 "}>
         <input
           type="text"
           name={"item"}
           placeholder={item}
           className={"w-full py-1 px-2 rounded"}
         />
-      </td>
-      <td className={"p-3 text-sm text-gray-800 min-w-[160px]"}>
+      </div>
+      <div className={"p-3 text-sm text-gray-800 "}>
         <input
           type="text"
           name={"amountInCrypto"}
           disabled
           className={"w-full py-1 px-2 rounded"}
         />
-      </td>
-      <td className={"p-3 text-sm text-gray-800 min-w-[160px]"}>
+      </div>
+      <div className={"p-3 text-sm text-gray-800 "}>
         <input
           type="text"
           name={"currency"}
           placeholder={cryptoCurrencyForPayment}
           className={"w-full py-1 px-2 rounded"}
         />
-      </td>
-      <td className={"p-3 text-sm text-gray-800 min-w-[160px]"}>
+      </div>
+      <div className={"p-3 text-sm text-gray-800 "}>
         <input
           type="text"
           name={"priceInCurrency"}
           disabled
           className={"w-full py-1 px-2 rounded"}
         />
-      </td>
-      <td className={"p-3 text-sm text-gray-800 min-w-[160px]"}>
+      </div>
+      <div className={"p-3 text-sm text-gray-800 "}>
         <input
           type="number"
           name={"amountInCurrency"}
           placeholder={amountInvoicedAsCurrency.toString()}
           className={"w-full py-1 px-2 rounded"}
         />
-      </td>
-      <td className={"p-3 text-sm text-gray-800 min-w-[160px]"}>
+      </div>
+      <div className={"p-3 text-sm text-gray-800 "}>
         <button
           type={"submit"}
           className="text-green-800 bg-green-50 p-2 rounded-full"
@@ -90,8 +90,8 @@ export const InlineRecordForm = ({
             />
           </svg>
         </button>
-      </td>
-      <td className={"p-3 text-sm text-gray-800 min-w-[160px]"}>
+      </div>
+      <div className={"p-3 text-sm text-gray-800 "}>
         <button
           type={"button"}
           className={"p-2 text-gray-800 bg-gray-100 rounded-full"}
@@ -110,7 +110,7 @@ export const InlineRecordForm = ({
             />
           </svg>
         </button>
-      </td>
+      </div>
     </form>
   );
 };

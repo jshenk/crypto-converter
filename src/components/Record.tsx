@@ -26,32 +26,31 @@ export const Record = ({
     cryptoCurrencyForPayment,
     currencyCode
   );
-  console.log("currencyExchnageRate", currencyExchnageRate);
 
   return (
-    <tr className={currencyExchnageRate === null ? "bg-red-50" : ""}>
+    <div>
       {viewState === "display" && (
-        <>
-          <td className={"p-3 text-sm text-gray-800"}>{name}</td>
-          <td className={"p-3 text-sm text-gray-800"}>{item}</td>
-          <td className={"p-3 text-sm text-gray-800"}>
+        <div className="grid grid-cols-8">
+          <div className={"p-3 text-sm text-gray-800"}>{name}</div>
+          <div className={"p-3 text-sm text-gray-800"}>{item}</div>
+          <div className={"p-3 text-sm text-gray-800"}>
             {currencyExchnageRate &&
               amountDueInCrypto(
                 amountInvoicedAsCurrency,
                 currencyExchnageRate.rate
               )}
-          </td>
-          <td className={"p-3 text-sm text-gray-800"}>
+          </div>
+          <div className={"p-3 text-sm text-gray-800"}>
             {cryptoCurrencyForPayment}
-          </td>
-          <td className={"p-3 text-sm text-gray-800"}>
+          </div>
+          <div className={"p-3 text-sm text-gray-800"}>
             {currencyExchnageRate &&
               currencyFormatter(currencyCode, currencyExchnageRate.rate)}
-          </td>
-          <td className={"p-3 text-sm text-gray-800"}>
+          </div>
+          <div className={"p-3 text-sm text-gray-800"}>
             {currencyFormatter(currencyCode, amountInvoicedAsCurrency)}
-          </td>
-          <td className={"p-3 text-sm text-gray-800"}>
+          </div>
+          <div className={"p-3 text-sm text-gray-800"}>
             <button
               type={"button"}
               className={"p-2 text-red-500 bg-red-50 rounded-full"}
@@ -70,8 +69,8 @@ export const Record = ({
                 />
               </svg>
             </button>
-          </td>
-          <td className={"p-3"}>
+          </div>
+          <div className={"p-3"}>
             <button
               type={"button"}
               className={"p-2 text-gray-800 bg-gray-100 rounded-full"}
@@ -91,25 +90,23 @@ export const Record = ({
                 />
               </svg>
             </button>
-          </td>
-        </>
+          </div>
+        </div>
       )}
       {viewState === "edit" && (
-        <tr className="bg-neutral-50">
-          <td colSpan={8}>
-            <InlineRecordForm
-              id={id}
-              setViewState={setViewState}
-              handelEditRecord={handelEditRecord}
-              name={name}
-              item={item}
-              cryptoCurrencyForPayment={cryptoCurrencyForPayment}
-              amountInvoicedAsCurrency={amountInvoicedAsCurrency}
-              currencyCode={currencyCode}
-            />
-          </td>
-        </tr>
+        <div className="bg-neutral-50">
+          <InlineRecordForm
+            id={id}
+            setViewState={setViewState}
+            handelEditRecord={handelEditRecord}
+            name={name}
+            item={item}
+            cryptoCurrencyForPayment={cryptoCurrencyForPayment}
+            amountInvoicedAsCurrency={amountInvoicedAsCurrency}
+            currencyCode={currencyCode}
+          />
+        </div>
       )}
-    </tr>
+    </div>
   );
 };

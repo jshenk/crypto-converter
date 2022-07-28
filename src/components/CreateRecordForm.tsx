@@ -4,8 +4,8 @@ interface CreateRecordFormProps {
 
 export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
   return (
-    <form onSubmit={handleSubmit} className="flex items-center">
-      <td className={"p-3 text-sm text-gray-800 max-w-[160px]"}>
+    <form onSubmit={handleSubmit} className="grid grid-cols-8">
+      <div className={"p-3 text-sm text-gray-800 "}>
         <input
           type="text"
           name={"name"}
@@ -15,8 +15,8 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
           }
           required
         />
-      </td>
-      <td className={"p-3 text-sm text-gray-800 max-w-[160px]"}>
+      </div>
+      <div className={"p-3 text-sm text-gray-800 "}>
         <input
           type="text"
           name={"item"}
@@ -25,19 +25,19 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
             "w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs"
           }
         />
-      </td>
-      <td className={"p-3 text-sm text-gray-800 max-w-[160px]"}>
+      </div>
+      <div className={"p-3 text-sm text-gray-800 "}>
         <input
           type="text"
           name={"amountInCrypto"}
           disabled
           className={"w-full py-1 px-2 rounded bg-indigo-50"}
         />
-      </td>
-      <td className={"p-3 text-sm text-gray-800 min-w-[160px]"}>
+      </div>
+      <div className={"p-3 text-sm text-gray-800"}>
         <select
           id="bitpay-crypto"
-          className="w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs"
+          className="w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs text-gray-800"
         >
           <option value="BTC">BTC</option>
           <option value="BCH">BCH</option>
@@ -48,17 +48,17 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
           <option value="SHIB">SHIB</option>
           <option value="DOGE">DOGE</option>
         </select>
-      </td>
-      <td className={"p-3 text-sm text-gray-800 max-w-[160px]"}>
+      </div>
+      <div className={"p-3 text-sm text-gray-800 "}>
         <input
           type="text"
           name={"priceInCurrency"}
           disabled
           className={"w-full py-1 px-2 rounded bg-indigo-50"}
         />
-      </td>
+      </div>
 
-      <td className={"p-3 text-sm text-gray-800 max-w-[160px]"}>
+      <div className={"p-3 text-sm text-gray-800 "}>
         <input
           type="number"
           name={"amountInCurrency"}
@@ -68,9 +68,9 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
           }
           required
         />
-      </td>
-      <td className={"min-w-[160px]"}></td>
-      <td className={"py-3 px-4 text-sm text-gray-800 max-w-[160px]"}>
+      </div>
+      <div className={""}></div>
+      <div className={"py-3 px-4 text-sm text-gray-800 "}>
         <button
           type={"submit"}
           className="text-blue-800 bg-blue-100 p-2 rounded-full"
@@ -88,7 +88,7 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
             />
           </svg>
         </button>
-      </td>
+      </div>
     </form>
   );
 };
