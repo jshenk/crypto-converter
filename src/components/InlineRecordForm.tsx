@@ -83,10 +83,10 @@ export const InlineRecordForm = ({
           className="w-full py-1 px-2 rounded"
         />
       </div>
-      <div className="p-3 text-sm text-gray-800 ">
+      <div className="p-3 text-sm text-gray-800">
         <button
           type="submit"
-          className="text-green-800 bg-green-50 p-2 rounded-full"
+          className="text-green-800 bg-green-50 p-2 rounded-full hover:bg-white transition-all"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -102,10 +102,10 @@ export const InlineRecordForm = ({
           </svg>
         </button>
       </div>
-      <div className="p-3 text-sm text-gray-800 ">
+      <div className="p-3 text-sm text-gray-800">
         <button
           type="button"
-          className="p-2 text-gray-800 bg-gray-100 rounded-full"
+          className="p-2 text-gray-800 bg-gray-50 rounded-full hover:bg-white transition-all"
           onClick={() => setViewState("display")}
         >
           <svg

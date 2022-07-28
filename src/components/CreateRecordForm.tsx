@@ -79,7 +79,7 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
       <div className="py-3 px-4 text-sm text-gray-800 ">
         <button
           type="submit"
-          className="text-indigo-800 bg-indigo-200 p-2 rounded-full"
+          className="text-indigo-800 bg-indigo-50 p-2 rounded-full hover:bg-white transition-all"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

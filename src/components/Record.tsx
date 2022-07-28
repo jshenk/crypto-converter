@@ -62,7 +62,7 @@ export const Record = ({
           <div className="p-3 text-sm text-gray-800">
             <button
               type="button"
-              className="p-2 text-red-500 bg-red-50 rounded-full"
+              className="p-2 text-red-500 bg-red-50 rounded-full border-red-50 hover:bg-red-100 transition-all"
               onClick={() => deleteRecord(id)}
             >
               <svg
@@ -82,7 +82,7 @@ export const Record = ({
           <div className="p-3">
             <button
               type="button"
-              className="p-2 text-gray-800 bg-gray-100 rounded-full"
+              className="p-2 text-gray-800 bg-gray-100 rounded-full hover:bg-gray-200 transition-all"
               onClick={() => setViewState("edit")}
             >
               <svg
