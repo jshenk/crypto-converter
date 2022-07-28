@@ -20,9 +20,7 @@ export const CurrencySelector = ({
       <select
         defaultValue={currency}
         onChange={(event) => setCurrency(event.target.value)}
-        className={
-          "py-1 px-2 rounded placeholder:uppercase placeholder:text-xs text-gray-800"
-        }
+        className={"py-1 px-2 rounded text-sm text-gray-800"}
       >
         {bitpaySettlementCurrencies.map((option) => {
           return <option value={option}>{option}</option>;
