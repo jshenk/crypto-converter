@@ -34,39 +34,35 @@ export const Record = ({
     <>
       {viewState === "display" && (
         <div className={`grid grid-cols-8 items-center ` + fetchClass}>
-          <div className={"p-3 text-sm text-gray-800"}>{name}</div>
-          <div className={"p-3 text-sm text-gray-800"}>{item}</div>
-          <div className={"p-3 text-sm text-gray-800"}>
+          <div className="p-3 text-sm text-gray-800">{name}</div>
+          <div className="p-3 text-sm text-gray-800">{item}</div>
+          <div className="p-3 text-sm text-gray-800">
             {currencyExchnageRate &&
               amountDueInCrypto(
                 amountInvoicedAsCurrency,
                 currencyExchnageRate.rate
               )}
             {currencyExchnageRate === null && (
-              <p className={"text-red-600"}>
-                ERROR: Unable to fetch conversion.
-              </p>
+              <p className="text-red-600">ERROR: Unable to fetch conversion.</p>
             )}
           </div>
-          <div className={"p-3 text-sm text-gray-800"}>
+          <div className="p-3 text-sm text-gray-800">
             {cryptoCurrencyForPayment}
           </div>
-          <div className={"p-3 text-sm text-gray-800"}>
+          <div className="p-3 text-sm text-gray-800">
             {currencyExchnageRate &&
               currencyFormatter(currencyCode, currencyExchnageRate.rate)}
             {currencyExchnageRate === null && (
-              <p className={"text-red-600"}>
-                ERROR: Unable to fetch conversion.
-              </p>
+              <p className="text-red-600">ERROR: Unable to fetch conversion.</p>
             )}
           </div>
-          <div className={"p-3 text-sm text-gray-800"}>
+          <div className="p-3 text-sm text-gray-800">
             {currencyFormatter(currencyCode, amountInvoicedAsCurrency)}
           </div>
-          <div className={"p-3 text-sm text-gray-800"}>
+          <div className="p-3 text-sm text-gray-800">
             <button
-              type={"button"}
-              className={"p-2 text-red-500 bg-red-50 rounded-full"}
+              type="button"
+              className="p-2 text-red-500 bg-red-50 rounded-full"
               onClick={() => deleteRecord(id)}
             >
               <svg
@@ -83,10 +79,10 @@ export const Record = ({
               </svg>
             </button>
           </div>
-          <div className={"p-3"}>
+          <div className="p-3">
             <button
-              type={"button"}
-              className={"p-2 text-gray-800 bg-gray-100 rounded-full"}
+              type="button"
+              className="p-2 text-gray-800 bg-gray-100 rounded-full"
               onClick={() => setViewState("edit")}
             >
               <svg

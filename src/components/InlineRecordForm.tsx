@@ -25,35 +25,35 @@ export const InlineRecordForm = ({
         setViewState("display");
       }}
       id={id}
-      className="grid grid-cols-8 items-center bg-neutral-50"
+      className="grid grid-cols-8 items-center bg-neutral-200"
     >
-      <div className={"p-3 text-sm text-gray-800"}>
+      <div className="p-3 text-sm text-gray-800">
         <input
           type="text"
-          name={"name"}
+          name="name"
           placeholder={name}
-          className={"w-full py-1 px-2 rounded"}
+          className="w-full py-1 px-2 rounded"
         />
       </div>
-      <div className={"p-3 text-sm text-gray-800 "}>
+      <div className="p-3 text-sm text-gray-800 ">
         <input
           type="text"
-          name={"item"}
+          name="item"
           placeholder={item}
-          className={"w-full py-1 px-2 rounded"}
+          className="w-full py-1 px-2 rounded"
         />
       </div>
-      <div className={"p-3 text-sm text-gray-800 "}>
+      <div className="p-3 text-sm text-gray-800">
         <input
           type="text"
-          name={"amountInCrypto"}
+          name="amountInCrypto"
           disabled
-          className={"w-full py-1 px-2 rounded"}
+          className="w-full py-1 px-2 rounded bg-neutral-300"
         />
       </div>
-      <div className={"p-3 text-sm text-gray-800 "}>
+      <div className="p-3 text-sm text-gray-800">
         <select
-          name={"cryptoCurrencyForPayment"}
+          name="cryptoCurrencyForPayment"
           id="bitpay-crypto"
           className="w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs text-gray-800"
           defaultValue={cryptoCurrencyForPayment}
@@ -67,25 +67,25 @@ export const InlineRecordForm = ({
           })}
         </select>
       </div>
-      <div className={"p-3 text-sm text-gray-800 "}>
+      <div className="p-3 text-sm text-gray-800">
         <input
           type="text"
-          name={"priceInCurrency"}
+          name="priceInCurrency"
           disabled
-          className={"w-full py-1 px-2 rounded"}
+          className="w-full py-1 px-2 rounded bg-neutral-300"
         />
       </div>
-      <div className={"p-3 text-sm text-gray-800 "}>
+      <div className="p-3 text-sm text-gray-800 ">
         <input
           type="number"
-          name={"amountInvoicedAsCurrency"}
+          name="amountInvoicedAsCurrency"
           placeholder={amountInvoicedAsCurrency.toString()}
-          className={"w-full py-1 px-2 rounded"}
+          className="w-full py-1 px-2 rounded"
         />
       </div>
-      <div className={"p-3 text-sm text-gray-800 "}>
+      <div className="p-3 text-sm text-gray-800 ">
         <button
-          type={"submit"}
+          type="submit"
           className="text-green-800 bg-green-50 p-2 rounded-full"
         >
           <svg
@@ -102,10 +102,10 @@ export const InlineRecordForm = ({
           </svg>
         </button>
       </div>
-      <div className={"p-3 text-sm text-gray-800 "}>
+      <div className="p-3 text-sm text-gray-800 ">
         <button
-          type={"button"}
-          className={"p-2 text-gray-800 bg-gray-100 rounded-full"}
+          type="button"
+          className="p-2 text-gray-800 bg-gray-100 rounded-full"
           onClick={() => setViewState("display")}
         >
           <svg

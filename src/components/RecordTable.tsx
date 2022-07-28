@@ -62,8 +62,8 @@ export const RecordTable = () => {
   return (
     <div className="mt-5 lg:mt-5 px-3 overflow-x-auto max-w-7xl mx-auto">
       <CurrencySelector currency={currency} setCurrency={setCurrency} />
-      <div className={"bg-white rounded shadow  min-w-[1280px] lg:min-w-0"}>
-        <div className={"grid grid-cols-8 items-center"}>
+      <div className="bg-white rounded shadow  min-w-[1280px] lg:min-w-0">
+        <div className="grid grid-cols-8 items-center">
           <div className="text-xs uppercase text-gray-600 p-3 border-b">
             Merchant
           </div>

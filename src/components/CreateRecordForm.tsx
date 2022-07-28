@@ -10,39 +10,39 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid grid-cols-8 items-center bg-indigo-50 border-t-4 border-indigo-800"
+      className="grid grid-cols-8 items-center bg-indigo-100 border-t-4 border-indigo-800"
     >
-      <div className={"p-3 text-sm text-gray-800 "}>
+      <div className="p-3 text-sm text-gray-800 ">
         <input
           type="text"
-          name={"name"}
-          placeholder={"Merchant"}
+          name="name"
+          placeholder="Merchant"
           className={
             "w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs"
           }
           required
         />
       </div>
-      <div className={"p-3 text-sm text-gray-800 "}>
+      <div className="p-3 text-sm text-gray-800 ">
         <input
           type="text"
-          name={"item"}
-          placeholder={"Item"}
+          name="item"
+          placeholder="Item"
           className={
             "w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs"
           }
           required
         />
       </div>
-      <div className={"p-3 text-sm text-gray-800 "}>
+      <div className="p-3 text-sm text-gray-800 ">
         <input
           type="text"
-          name={"amountInCrypto"}
+          name="amountInCrypto"
           disabled
-          className={"w-full py-1 px-2 rounded bg-blue-100"}
+          className="w-full py-1 px-2 rounded bg-indigo-200"
         />
       </div>
-      <div className={"p-3 text-sm text-gray-800"}>
+      <div className="p-3 text-sm text-gray-800">
         <select
           id="bitpay-crypto"
           className="w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs text-gray-800"
@@ -56,30 +56,30 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
           })}
         </select>
       </div>
-      <div className={"p-3 text-sm text-gray-800 "}>
+      <div className="p-3 text-sm text-gray-800 ">
         <input
           type="text"
-          name={"priceInCurrency"}
+          name="priceInCurrency"
           disabled
-          className={"w-full py-1 px-2 rounded bg-blue-100"}
+          className="w-full py-1 px-2 rounded bg-indigo-200"
         />
       </div>
 
-      <div className={"p-3 text-sm text-gray-800 col-span-2 max-w-[140px]"}>
+      <div className="p-3 text-sm text-gray-800 col-span-2 max-w-[140px]">
         <input
           type="number"
-          name={"amountInCurrency"}
-          placeholder={"Amount"}
+          name="amountInCurrency"
+          placeholder="Amount"
           className={
             "py-1 px-2 rounded placeholder:uppercase placeholder:text-xs w-full"
           }
           required
         />
       </div>
-      <div className={"py-3 px-4 text-sm text-gray-800 "}>
+      <div className="py-3 px-4 text-sm text-gray-800 ">
         <button
-          type={"submit"}
-          className="text-blue-800 bg-blue-100 p-2 rounded-full"
+          type="submit"
+          className="text-indigo-800 bg-indigo-200 p-2 rounded-full"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
