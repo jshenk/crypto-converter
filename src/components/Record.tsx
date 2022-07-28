@@ -20,34 +20,33 @@ export const Record = ({
   handelEditRecord,
   currencyCode,
 }: RecordProps) => {
+  const [viewState, setViewState] = useState<"display" | "edit">("display");
+
   const currencyExchnageRate = useExchangeRates(
     cryptoCurrencyForPayment,
     currencyCode
   );
-
-  const [viewState, setViewState] = useState<"display" | "edit">("display");
+  console.log("currencyExchnageRate", currencyExchnageRate);
 
   return (
-    <tr>
+    <tr className={currencyExchnageRate === null ? "bg-red-50" : ""}>
       {viewState === "display" && (
         <>
           <td className={"p-3 text-sm text-gray-800"}>{name}</td>
           <td className={"p-3 text-sm text-gray-800"}>{item}</td>
           <td className={"p-3 text-sm text-gray-800"}>
-            {currencyExchnageRate
-              ? amountDueInCrypto(
-                  amountInvoicedAsCurrency,
-                  currencyExchnageRate.rate
-                )
-              : 0}
+            {currencyExchnageRate &&
+              amountDueInCrypto(
+                amountInvoicedAsCurrency,
+                currencyExchnageRate.rate
+              )}
           </td>
           <td className={"p-3 text-sm text-gray-800"}>
             {cryptoCurrencyForPayment}
           </td>
           <td className={"p-3 text-sm text-gray-800"}>
-            {currencyExchnageRate
-              ? currencyFormatter(currencyCode, currencyExchnageRate.rate)
-              : 0.0}
+            {currencyExchnageRate &&
+              currencyFormatter(currencyCode, currencyExchnageRate.rate)}
           </td>
           <td className={"p-3 text-sm text-gray-800"}>
             {currencyFormatter(currencyCode, amountInvoicedAsCurrency)}

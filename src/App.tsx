@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import { CreateRecordForm } from "./components/CreateRecordForm";
 import { Record } from "./components/Record";
 import { merchantRecords } from "./data/merchantRecords";
 import { MerchantTransaction } from "./models/MerchantTransaction";
@@ -9,7 +10,6 @@ function App() {
     useState<MerchantTransaction[]>(merchantRecords);
 
   const handleSubmit = (event: any) => {
-    console.log("event", event);
     event.preventDefault();
     const newRecord = {
       id: "id" + new Date().getTime(),
@@ -30,6 +30,7 @@ function App() {
   };
 
   const handelEditRecord = (event: any) => {
+    console.log("event", event);
     event.preventDefault();
     const editedRecord = {
       name: event.target[0].value,
@@ -37,7 +38,7 @@ function App() {
       cryptoCurrencyForPayment: event.target[3].value,
       amountInvoicedAsCurrency: event.target[5].value,
     };
-    console.log("editedRecord", editedRecord);
+
     setRecords((currenRecords) =>
       currenRecords.map((currentRecord) => {
         if (currentRecord.id === event.target.id) {
@@ -56,7 +57,7 @@ function App() {
           <h1 className="text-4xl font-bold text-white">Merchant Records</h1>
         </div>
       </div>
-      <div className="bg-slate-100 py-20 rounded m-3 min-h-screen">
+      <div className="bg-slate-100 py-20 rounded m-3 min-h-screen overflow-x-auto">
         <table className="table-fixed w-full mx-auto max-w-7xl bg-white p-3 rounded shadow ">
           <thead className="text-left">
             <tr>
@@ -80,11 +81,9 @@ function App() {
                 Amount (USD)
               </th>
               <th className="text-xs uppercase text-gray-600 p-3 border-b">
-                Delete
+                Actions
               </th>
-              <th className="text-xs uppercase text-gray-600 p-3 border-b">
-                Edit
-              </th>
+              <th className="text-xs uppercase text-gray-600 p-3 border-b"></th>
             </tr>
           </thead>
           <tbody>
@@ -115,90 +114,7 @@ function App() {
               )}
             <tr className="bg-indigo-50 border-t-4 border-indigo-800">
               <td colSpan={8}>
-                <form onSubmit={handleSubmit} className="flex items-center">
-                  <td className={"p-3 text-sm text-gray-800 max-w-[160px]"}>
-                    <input
-                      type="text"
-                      name={"name"}
-                      placeholder={"Merchant"}
-                      className={
-                        "w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs"
-                      }
-                      required
-                    />
-                  </td>
-                  <td className={"p-3 text-sm text-gray-800 max-w-[160px]"}>
-                    <input
-                      type="text"
-                      name={"item"}
-                      placeholder={"Item"}
-                      className={
-                        "w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs"
-                      }
-                    />
-                  </td>
-                  <td className={"p-3 text-sm text-gray-800 max-w-[160px]"}>
-                    <input
-                      type="text"
-                      name={"amountInCrypto"}
-                      disabled
-                      className={"w-full py-1 px-2 rounded bg-indigo-50"}
-                    />
-                  </td>
-                  <td className={"p-3 text-sm text-gray-800 max-w-[160px]"}>
-                    <input
-                      type="text"
-                      name={"currency"}
-                      placeholder={"Currency"}
-                      className={
-                        "w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs"
-                      }
-                      required
-                    />
-                  </td>
-                  <td className={"p-3 text-sm text-gray-800 max-w-[160px]"}>
-                    <input
-                      type="text"
-                      name={"priceInCurrency"}
-                      disabled
-                      className={"w-full py-1 px-2 rounded bg-indigo-50"}
-                    />
-                  </td>
-
-                  <td className={"p-3 text-sm text-gray-800 max-w-[160px]"}>
-                    <input
-                      type="number"
-                      name={"amountInCurrency"}
-                      placeholder={"Amount (USD)"}
-                      className={
-                        "w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs"
-                      }
-                      required
-                    />
-                  </td>
-                  <td className={"min-w-[160px]"}></td>
-                  <td
-                    className={"py-3 px-4 text-sm text-gray-800 max-w-[160px]"}
-                  >
-                    <button
-                      type={"submit"}
-                      className="text-blue-800 bg-blue-100 p-2 rounded-full"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </button>
-                  </td>
-                </form>
+                <CreateRecordForm handleSubmit={handleSubmit} />
               </td>
             </tr>
           </tbody>

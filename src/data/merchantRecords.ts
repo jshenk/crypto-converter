@@ -1,6 +1,6 @@
 export const merchantRecords = [
   {
-    id: "id" + new Date().getTime(),
+    id: "id1",
     name: "ShirtTown",
     item: "T-shirts",
     cryptoCurrencyForPayment: "BTC",
@@ -8,7 +8,7 @@ export const merchantRecords = [
     currencyCode: "USD",
   },
   {
-    id: "id" + new Date().getTime(),
+    id: "id2",
     name: "CupTown",
     item: "Cups",
     cryptoCurrencyForPayment: "BCH",
@@ -16,7 +16,7 @@ export const merchantRecords = [
     currencyCode: "USD",
   },
   {
-    id: "id" + new Date().getTime(),
+    id: "id3",
     name: "TinselTown",
     item: "Tinsel",
     cryptoCurrencyForPayment: "ETH",

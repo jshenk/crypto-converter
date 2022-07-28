@@ -30,7 +30,6 @@ export const InlineRecordForm = ({
           name={"name"}
           placeholder={name}
           className={"w-full py-1 px-2 rounded"}
-          required
         />
       </td>
       <td className={"p-3 text-sm text-gray-800 min-w-[160px]"}>
@@ -39,7 +38,6 @@ export const InlineRecordForm = ({
           name={"item"}
           placeholder={item}
           className={"w-full py-1 px-2 rounded"}
-          required
         />
       </td>
       <td className={"p-3 text-sm text-gray-800 min-w-[160px]"}>
@@ -56,7 +54,6 @@ export const InlineRecordForm = ({
           name={"currency"}
           placeholder={cryptoCurrencyForPayment}
           className={"w-full py-1 px-2 rounded"}
-          required
         />
       </td>
       <td className={"p-3 text-sm text-gray-800 min-w-[160px]"}>
@@ -73,7 +70,6 @@ export const InlineRecordForm = ({
           name={"amountInCurrency"}
           placeholder={amountInvoicedAsCurrency.toString()}
           className={"w-full py-1 px-2 rounded"}
-          required
         />
       </td>
       <td className={"p-3 text-sm text-gray-800 min-w-[160px]"}>

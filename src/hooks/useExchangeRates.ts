@@ -11,14 +11,14 @@ const REFRESH_INTERVAL = 1000 * 60 * 2;
 export const useExchangeRates = (
   cryptoCurrency: string,
   currency: string
-): ExchangeRateResponse | undefined => {
-  const [rate, setRate] = useState<undefined | ExchangeRateResponse>();
+): ExchangeRateResponse | undefined | null => {
+  const [rate, setRate] = useState<undefined | ExchangeRateResponse | null>();
   useEffect(() => {
     const fetchData = async () => {
       await fetch(`https://bitpay.com/api/rates/${cryptoCurrency}/${currency}`)
         .then((response) => response.json())
         .then((data) => setRate(data))
-        .catch((error) => console.log(error));
+        .catch((error) => setRate(null));
     };
 
     const id = setInterval(() => {
