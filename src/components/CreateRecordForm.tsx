@@ -1,10 +1,15 @@
+import { bitpayAcceptedCrypto } from "../data/bitpayAcceptedCrypto";
+
 interface CreateRecordFormProps {
   handleSubmit: (event: any) => void;
 }
 
 export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
   return (
-    <form onSubmit={handleSubmit} className="grid grid-cols-8 items-center">
+    <form
+      onSubmit={handleSubmit}
+      className="grid grid-cols-8 items-center bg-indigo-50 border-t-4 border-indigo-800"
+    >
       <div className={"p-3 text-sm text-gray-800 "}>
         <input
           type="text"
@@ -39,14 +44,9 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
           id="bitpay-crypto"
           className="w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs text-gray-800"
         >
-          <option value="BTC">BTC</option>
-          <option value="BCH">BCH</option>
-          <option value="ETH">ETH</option>
-          <option value="WBTC">WBTC</option>
-          <option value="LTC">LTC</option>
-          <option value="DOGE">DOGE</option>
-          <option value="SHIB">SHIB</option>
-          <option value="DOGE">DOGE</option>
+          {bitpayAcceptedCrypto.map((option) => {
+            return <option value={option}>{option}</option>;
+          })}
         </select>
       </div>
       <div className={"p-3 text-sm text-gray-800 "}>

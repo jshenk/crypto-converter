@@ -28,7 +28,7 @@ export const Record = ({
   );
 
   return (
-    <div>
+    <>
       {viewState === "display" && (
         <div className="grid grid-cols-8 items-center">
           <div className={"p-3 text-sm text-gray-800"}>{name}</div>
@@ -94,19 +94,17 @@ export const Record = ({
         </div>
       )}
       {viewState === "edit" && (
-        <div className="bg-neutral-50">
-          <InlineRecordForm
-            id={id}
-            setViewState={setViewState}
-            handelEditRecord={handelEditRecord}
-            name={name}
-            item={item}
-            cryptoCurrencyForPayment={cryptoCurrencyForPayment}
-            amountInvoicedAsCurrency={amountInvoicedAsCurrency}
-            currencyCode={currencyCode}
-          />
-        </div>
+        <InlineRecordForm
+          id={id}
+          setViewState={setViewState}
+          handelEditRecord={handelEditRecord}
+          name={name}
+          item={item}
+          cryptoCurrencyForPayment={cryptoCurrencyForPayment}
+          amountInvoicedAsCurrency={amountInvoicedAsCurrency}
+          currencyCode={currencyCode}
+        />
       )}
-    </div>
+    </>
   );
 };

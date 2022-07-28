@@ -1,3 +1,4 @@
+import { bitpayAcceptedCrypto } from "../data/bitpayAcceptedCrypto";
 import { MerchantTransaction } from "../models/MerchantTransaction";
 
 interface InlineRecordFormProps extends MerchantTransaction {
@@ -22,9 +23,9 @@ export const InlineRecordForm = ({
         setViewState("display");
       }}
       id={id}
-      className="grid grid-cols-8 items-center"
+      className="grid grid-cols-8 items-center bg-neutral-50"
     >
-      <div className={"p-3 text-sm text-gray-800 "}>
+      <div className={"p-3 text-sm text-gray-800"}>
         <input
           type="text"
           name={"name"}
@@ -49,12 +50,15 @@ export const InlineRecordForm = ({
         />
       </div>
       <div className={"p-3 text-sm text-gray-800 "}>
-        <input
-          type="text"
-          name={"currency"}
-          placeholder={cryptoCurrencyForPayment}
-          className={"w-full py-1 px-2 rounded"}
-        />
+        <select
+          name={"cryptoCurrencyForPayment"}
+          id="bitpay-crypto"
+          className="w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs text-gray-800"
+        >
+          {bitpayAcceptedCrypto.map((option) => {
+            return <option value={option}>{option}</option>;
+          })}
+        </select>
       </div>
       <div className={"p-3 text-sm text-gray-800 "}>
         <input
@@ -67,7 +71,7 @@ export const InlineRecordForm = ({
       <div className={"p-3 text-sm text-gray-800 "}>
         <input
           type="number"
-          name={"amountInCurrency"}
+          name={"amountInvoicedAsCurrency"}
           placeholder={amountInvoicedAsCurrency.toString()}
           className={"w-full py-1 px-2 rounded"}
         />
