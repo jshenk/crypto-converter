@@ -28,10 +28,12 @@ export const Record = ({
     currencyCode
   );
 
+  const fetchClass = currencyExchnageRate === null ? "bg-red-50" : "bg-white";
+
   return (
     <>
       {viewState === "display" && (
-        <div className="grid grid-cols-8 items-center">
+        <div className={`grid grid-cols-8 items-center ` + fetchClass}>
           <div className={"p-3 text-sm text-gray-800"}>{name}</div>
           <div className={"p-3 text-sm text-gray-800"}>{item}</div>
           <div className={"p-3 text-sm text-gray-800"}>
@@ -40,6 +42,11 @@ export const Record = ({
                 amountInvoicedAsCurrency,
                 currencyExchnageRate.rate
               )}
+            {currencyExchnageRate === null && (
+              <p className={"text-red-600"}>
+                ERROR: Unable to fetch conversion.
+              </p>
+            )}
           </div>
           <div className={"p-3 text-sm text-gray-800"}>
             {cryptoCurrencyForPayment}
@@ -47,6 +54,11 @@ export const Record = ({
           <div className={"p-3 text-sm text-gray-800"}>
             {currencyExchnageRate &&
               currencyFormatter(currencyCode, currencyExchnageRate.rate)}
+            {currencyExchnageRate === null && (
+              <p className={"text-red-600"}>
+                ERROR: Unable to fetch conversion.
+              </p>
+            )}
           </div>
           <div className={"p-3 text-sm text-gray-800"}>
             {currencyFormatter(currencyCode, amountInvoicedAsCurrency)}
