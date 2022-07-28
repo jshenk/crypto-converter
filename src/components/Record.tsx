@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { useExchangeRates } from "../hooks/useExchangeRates";
 import { MerchantTransaction } from "../models/MerchantTransaction";
 import { amountDueInCrypto } from "../utils/amountDueInCrypto";
@@ -7,9 +7,10 @@ import { InlineRecordForm } from "./InlineRecordForm";
 
 interface RecordProps extends MerchantTransaction {
   deleteRecord: (id: string) => void;
-  handelEditRecord: (event: any) => void;
+  handelEditRecord: (event: FormEvent<HTMLFormElement>) => void;
 }
 
+/** Displays a merchant item's cost in both regularl currency and cryptocurrency. */
 export const Record = ({
   id,
   name,
@@ -95,6 +96,7 @@ export const Record = ({
       )}
       {viewState === "edit" && (
         <InlineRecordForm
+          key={id}
           id={id}
           setViewState={setViewState}
           handelEditRecord={handelEditRecord}

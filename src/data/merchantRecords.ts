@@ -1,3 +1,4 @@
+/** Default merchant records on load. */
 export const merchantRecords = [
   {
     id: "id1",

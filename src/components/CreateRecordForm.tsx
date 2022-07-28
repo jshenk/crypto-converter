@@ -1,9 +1,11 @@
+import { FormEvent } from "react";
 import { bitpayAcceptedCrypto } from "../data/bitpayAcceptedCrypto";
 
 interface CreateRecordFormProps {
-  handleSubmit: (event: any) => void;
+  handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }
 
+/** Add new record to merchant record database. */
 export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
   return (
     <form
@@ -29,6 +31,7 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
           className={
             "w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs"
           }
+          required
         />
       </div>
       <div className={"p-3 text-sm text-gray-800 "}>
@@ -45,7 +48,11 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
           className="w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs text-gray-800"
         >
           {bitpayAcceptedCrypto.map((option) => {
-            return <option value={option}>{option}</option>;
+            return (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            );
           })}
         </select>
       </div>
@@ -62,9 +69,9 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
         <input
           type="number"
           name={"amountInCurrency"}
-          placeholder={"Amount (USD)"}
+          placeholder={"Amount"}
           className={
-            "py-1 px-2 rounded placeholder:uppercase placeholder:text-xs"
+            "py-1 px-2 rounded placeholder:uppercase placeholder:text-xs w-full"
           }
           required
         />

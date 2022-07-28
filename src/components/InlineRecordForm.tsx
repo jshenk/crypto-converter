@@ -1,12 +1,14 @@
+import { FormEvent } from "react";
 import { bitpayAcceptedCrypto } from "../data/bitpayAcceptedCrypto";
 import { MerchantTransaction } from "../models/MerchantTransaction";
 
 interface InlineRecordFormProps extends MerchantTransaction {
   setViewState: (view: "display" | "edit") => void;
-  handelEditRecord: any;
+  handelEditRecord: (event: FormEvent<HTMLFormElement>) => void;
   id: string;
 }
 
+/** Edit a single merchant record. */
 export const InlineRecordForm = ({
   setViewState,
   handelEditRecord,
@@ -54,9 +56,14 @@ export const InlineRecordForm = ({
           name={"cryptoCurrencyForPayment"}
           id="bitpay-crypto"
           className="w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs text-gray-800"
+          defaultValue={cryptoCurrencyForPayment}
         >
           {bitpayAcceptedCrypto.map((option) => {
-            return <option value={option}>{option}</option>;
+            return (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            );
           })}
         </select>
       </div>

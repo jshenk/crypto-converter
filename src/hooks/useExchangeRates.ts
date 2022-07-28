@@ -8,17 +8,23 @@ interface ExchangeRateResponse {
 
 const REFRESH_INTERVAL = 1000 * 60 * 2;
 
+/**
+ * Fetch crypto to currency coversion rate, and update on a 2 min interval
+ * @param cryptoCurrency BCH
+ * @param currency USD
+ */
 export const useExchangeRates = (
   cryptoCurrency: string,
   currency: string
 ): ExchangeRateResponse | undefined | null => {
+  console.log("currency", currency);
   const [rate, setRate] = useState<undefined | ExchangeRateResponse | null>();
   useEffect(() => {
     const fetchData = async () => {
       await fetch(`https://bitpay.com/api/rates/${cryptoCurrency}/${currency}`)
         .then((response) => response.json())
         .then((data) => setRate(data))
-        .catch((error) => setRate(null));
+        .catch((error) => console.log(error));
     };
 
     const id = setInterval(() => {

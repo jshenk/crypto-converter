@@ -1,3 +1,4 @@
+/** Accepted crypto coins in the bitpay API. */
 export const bitpayAcceptedCrypto = [
   "BTC",
   "BCH",

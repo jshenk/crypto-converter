@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { merchantRecords } from "../data/merchantRecords";
 import { MerchantTransaction } from "../models/MerchantTransaction";
 import { CreateRecordForm } from "./CreateRecordForm";
+import { CurrencySelector } from "./CurrencySelector";
 import { Record } from "./Record";
 
+/** Displays a full list of merchant records, that can be added to, updated, or deleted at the record level. */
 export const RecordTable = () => {
+  const [currency, setCurrency] = useState("USD");
   const [records, setRecords] =
     useState<MerchantTransaction[]>(merchantRecords);
 
@@ -12,11 +15,11 @@ export const RecordTable = () => {
     event.preventDefault();
     const newRecord = {
       id: "id" + new Date().getTime(),
-      name: event.target[0].value,
-      item: event.target[1].value,
-      cryptoCurrencyForPayment: event.target[3].value,
-      amountInvoicedAsCurrency: event.target[5].value,
-      currencyCode: "USD",
+      name: (event.target[0] as HTMLInputElement).value,
+      item: (event.target[1] as HTMLInputElement).value,
+      cryptoCurrencyForPayment: (event.target[3] as HTMLSelectElement).value,
+      amountInvoicedAsCurrency: (event.target[5] as any).value,
+      currencyCode: currency,
     };
     setRecords([...records, newRecord]);
   };
@@ -28,7 +31,7 @@ export const RecordTable = () => {
     setRecords(filteredRecords);
   };
 
-  const handelEditRecord = (event: any) => {
+  const handleEditRecord = (event: any) => {
     event.preventDefault();
 
     const inputs = event.target.elements;
@@ -57,12 +60,9 @@ export const RecordTable = () => {
   };
 
   return (
-    <div className="mt-10 lg:mt-20 mx-3 overflow-x-auto">
-      <div
-        className={
-          "bg-white rounded shadow max-w-7xl mx-auto min-w-[1280px] lg:min-w-0"
-        }
-      >
+    <div className="mt-5 lg:mt-5 px-3 overflow-x-auto max-w-7xl mx-auto">
+      <CurrencySelector currency={currency} setCurrency={setCurrency} />
+      <div className={"bg-white rounded shadow  min-w-[1280px] lg:min-w-0"}>
         <div className={"grid grid-cols-8 items-center"}>
           <div className="text-xs uppercase text-gray-600 p-3 border-b">
             Merchant
@@ -77,10 +77,10 @@ export const RecordTable = () => {
             Currency
           </div>
           <div className="text-xs uppercase text-gray-600 p-3 border-b">
-            Price/crypto (USD)
+            Price/crypto ({currency})
           </div>
           <div className="text-xs uppercase text-gray-600 p-3 border-b">
-            Amount (USD)
+            Amount ({currency})
           </div>
           <div className="text-xs uppercase text-gray-600 p-3 border-b col-span-2">
             Actions
@@ -94,7 +94,6 @@ export const RecordTable = () => {
               item,
               cryptoCurrencyForPayment,
               amountInvoicedAsCurrency,
-              currencyCode,
             }) => {
               return (
                 <Record
@@ -105,8 +104,8 @@ export const RecordTable = () => {
                   cryptoCurrencyForPayment={cryptoCurrencyForPayment}
                   amountInvoicedAsCurrency={amountInvoicedAsCurrency}
                   deleteRecord={deleteRecord}
-                  handelEditRecord={handelEditRecord}
-                  currencyCode={currencyCode}
+                  handelEditRecord={handleEditRecord}
+                  currencyCode={currency}
                 />
               );
             }
