@@ -30,7 +30,7 @@ export const Record = ({
   return (
     <div>
       {viewState === "display" && (
-        <div className="grid grid-cols-8">
+        <div className="grid grid-cols-8 items-center">
           <div className={"p-3 text-sm text-gray-800"}>{name}</div>
           <div className={"p-3 text-sm text-gray-800"}>{item}</div>
           <div className={"p-3 text-sm text-gray-800"}>

@@ -58,7 +58,7 @@ function App() {
         </div>
       </div>
       <div className="w-full mx-auto max-w-7xl bg-white rounded shadow mt-20">
-        <div className={"grid grid-cols-8"}>
+        <div className={"grid grid-cols-8 items-center"}>
           <div className="text-xs uppercase text-gray-600 p-3 border-b">
             Merchant
           </div>
@@ -78,10 +78,9 @@ function App() {
           <div className="text-xs uppercase text-gray-600 p-3 border-b">
             Amount (USD)
           </div>
-          <div className="text-xs uppercase text-gray-600 p-3 border-b">
+          <div className="text-xs uppercase text-gray-600 p-3 border-b col-span-2">
             Actions
           </div>
-          <div className="text-xs uppercase text-gray-600 p-3 border-b"></div>
         </div>
         <div>
           {records &&

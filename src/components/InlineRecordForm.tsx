@@ -22,7 +22,7 @@ export const InlineRecordForm = ({
         setViewState("display");
       }}
       id={id}
-      className="grid grid-cols-8"
+      className="grid grid-cols-8 items-center"
     >
       <div className={"p-3 text-sm text-gray-800 "}>
         <input

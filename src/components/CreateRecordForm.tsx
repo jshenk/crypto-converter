@@ -4,7 +4,7 @@ interface CreateRecordFormProps {
 
 export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
   return (
-    <form onSubmit={handleSubmit} className="grid grid-cols-8">
+    <form onSubmit={handleSubmit} className="grid grid-cols-8 items-center">
       <div className={"p-3 text-sm text-gray-800 "}>
         <input
           type="text"
@@ -31,7 +31,7 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
           type="text"
           name={"amountInCrypto"}
           disabled
-          className={"w-full py-1 px-2 rounded bg-indigo-50"}
+          className={"w-full py-1 px-2 rounded bg-blue-100"}
         />
       </div>
       <div className={"p-3 text-sm text-gray-800"}>
@@ -54,22 +54,21 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
           type="text"
           name={"priceInCurrency"}
           disabled
-          className={"w-full py-1 px-2 rounded bg-indigo-50"}
+          className={"w-full py-1 px-2 rounded bg-blue-100"}
         />
       </div>
 
-      <div className={"p-3 text-sm text-gray-800 "}>
+      <div className={"p-3 text-sm text-gray-800 col-span-2 max-w-[140px]"}>
         <input
           type="number"
           name={"amountInCurrency"}
           placeholder={"Amount (USD)"}
           className={
-            "w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs"
+            "py-1 px-2 rounded placeholder:uppercase placeholder:text-xs"
           }
           required
         />
       </div>
-      <div className={""}></div>
       <div className={"py-3 px-4 text-sm text-gray-800 "}>
         <button
           type={"submit"}
