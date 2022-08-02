@@ -1,14 +1,10 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { useExchangeRates } from "../hooks/useExchangeRates";
+import { ChangeRecords } from "../models/ChangeRecords";
 import { MerchantTransaction } from "../models/MerchantTransaction";
 import { amountDueInCrypto } from "../utils/amountDueInCrypto";
 import { currencyFormatter } from "../utils/currencyFormatter";
 import { InlineRecordForm } from "./InlineRecordForm";
-
-interface RecordProps extends MerchantTransaction {
-  deleteRecord: (id: string) => void;
-  handelEditRecord: (event: FormEvent<HTMLFormElement>) => void;
-}
 
 /** Displays a merchant item's cost in both regularl currency and cryptocurrency. */
 export const Record = ({
@@ -17,10 +13,10 @@ export const Record = ({
   item,
   cryptoCurrencyForPayment,
   amountInvoicedAsCurrency,
-  deleteRecord,
-  handelEditRecord,
+  records,
+  setRecords,
   currencyCode,
-}: RecordProps) => {
+}: MerchantTransaction & ChangeRecords) => {
   const [viewState, setViewState] = useState<"display" | "edit">("display");
 
   const currencyExchnageRate = useExchangeRates(
@@ -29,6 +25,13 @@ export const Record = ({
   );
 
   const fetchClass = currencyExchnageRate === null ? "bg-red-50" : "bg-white";
+
+  const deleteRecord = (id: string) => {
+    const filteredRecords: MerchantTransaction[] = records.filter(
+      (item: { id: string }) => id !== item.id
+    );
+    setRecords(filteredRecords);
+  };
 
   return (
     <>
@@ -107,7 +110,7 @@ export const Record = ({
           key={id}
           id={id}
           setViewState={setViewState}
-          handelEditRecord={handelEditRecord}
+          setRecords={setRecords}
           name={name}
           item={item}
           cryptoCurrencyForPayment={cryptoCurrencyForPayment}

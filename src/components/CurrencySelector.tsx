@@ -23,7 +23,11 @@ export const CurrencySelector = ({
         className="py-1 px-2 rounded text-sm text-gray-800"
       >
         {bitpaySettlementCurrencies.map((option) => {
-          return <option value={option}>{option}</option>;
+          return (
+            <option value={option} key={option}>
+              {option}
+            </option>
+          );
         })}
       </select>
     </div>

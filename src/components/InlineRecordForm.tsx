@@ -1,29 +1,46 @@
-import { FormEvent } from "react";
 import { bitpayAcceptedCrypto } from "../data/bitpayAcceptedCrypto";
 import { MerchantTransaction } from "../models/MerchantTransaction";
+import { useFormik } from "formik";
 
 interface InlineRecordFormProps extends MerchantTransaction {
   setViewState: (view: "display" | "edit") => void;
-  handelEditRecord: (event: FormEvent<HTMLFormElement>) => void;
   id: string;
+  setRecords: any;
 }
 
 /** Edit a single merchant record. */
 export const InlineRecordForm = ({
   setViewState,
-  handelEditRecord,
   id,
   name,
   item,
   cryptoCurrencyForPayment,
   amountInvoicedAsCurrency,
+  setRecords,
 }: InlineRecordFormProps) => {
+  const formik = useFormik({
+    initialValues: {
+      name: name,
+      item: item,
+      cryptoCurrencyForPayment: cryptoCurrencyForPayment,
+      amountInvoicedAsCurrency: amountInvoicedAsCurrency,
+    },
+    onSubmit: (values) => {
+      setRecords((currenRecords: any[]) =>
+        currenRecords.map((currentRecord: { id: string }) => {
+          if (currentRecord.id === id) {
+            return { ...currentRecord, ...values };
+          }
+
+          return currentRecord;
+        })
+      );
+      setViewState("display");
+    },
+  });
   return (
     <form
-      onSubmit={(event) => {
-        handelEditRecord(event);
-        setViewState("display");
-      }}
+      onSubmit={formik.handleSubmit}
       id={id}
       className="grid grid-cols-8 items-center bg-neutral-200"
     >
@@ -33,6 +50,8 @@ export const InlineRecordForm = ({
           name="name"
           placeholder={name}
           className="w-full py-1 px-2 rounded"
+          value={formik.values.name}
+          onChange={formik.handleChange}
         />
       </div>
       <div className="p-3 text-sm text-gray-800 ">
@@ -40,6 +59,8 @@ export const InlineRecordForm = ({
           type="text"
           name="item"
           placeholder={item}
+          value={formik.values.item}
+          onChange={formik.handleChange}
           className="w-full py-1 px-2 rounded"
         />
       </div>
@@ -56,7 +77,8 @@ export const InlineRecordForm = ({
           name="cryptoCurrencyForPayment"
           id="bitpay-crypto"
           className="w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs text-gray-800"
-          defaultValue={cryptoCurrencyForPayment}
+          defaultValue={formik.values.cryptoCurrencyForPayment}
+          onChange={formik.handleChange}
         >
           {bitpayAcceptedCrypto.map((option) => {
             return (
@@ -79,8 +101,9 @@ export const InlineRecordForm = ({
         <input
           type="number"
           name="amountInvoicedAsCurrency"
-          placeholder={amountInvoicedAsCurrency.toString()}
           className="w-full py-1 px-2 rounded"
+          value={formik.values.amountInvoicedAsCurrency}
+          onChange={formik.handleChange}
         />
       </div>
       <div className="p-3 text-sm text-gray-800">

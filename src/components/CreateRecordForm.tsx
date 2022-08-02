@@ -1,15 +1,37 @@
-import { FormEvent } from "react";
 import { bitpayAcceptedCrypto } from "../data/bitpayAcceptedCrypto";
+import { useFormik } from "formik";
+import { MerchantTransaction } from "../models/MerchantTransaction";
 
 interface CreateRecordFormProps {
-  handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  records: MerchantTransaction[];
+  setRecords: any;
+  currency: string;
 }
 
 /** Add new record to merchant record database. */
-export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
+export const CreateRecordForm = ({
+  records,
+  setRecords,
+  currency,
+}: CreateRecordFormProps) => {
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      item: "",
+      cryptoCurrencyForPayment: "BTC",
+      amountInvoicedAsCurrency: "",
+      currency: currency,
+    },
+    onSubmit: (values, { resetForm }) => {
+      const id = { id: "id" + new Date().getTime() };
+      setRecords([...records, { ...id, ...values }]);
+      resetForm();
+    },
+  });
+
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={formik.handleSubmit}
       className="grid grid-cols-8 items-center bg-indigo-100 border-t-4 border-indigo-800"
     >
       <div className="p-3 text-sm text-gray-800 ">
@@ -21,6 +43,8 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
             "w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs"
           }
           required
+          onChange={formik.handleChange}
+          value={formik.values.name}
         />
       </div>
       <div className="p-3 text-sm text-gray-800 ">
@@ -32,6 +56,8 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
             "w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs"
           }
           required
+          onChange={formik.handleChange}
+          value={formik.values.item}
         />
       </div>
       <div className="p-3 text-sm text-gray-800 ">
@@ -44,8 +70,11 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
       </div>
       <div className="p-3 text-sm text-gray-800">
         <select
+          name={"cryptoCurrencyForPayment"}
           id="bitpay-crypto"
           className="w-full py-1 px-2 rounded placeholder:uppercase placeholder:text-xs text-gray-800"
+          onChange={formik.handleChange}
+          value={formik.values.cryptoCurrencyForPayment}
         >
           {bitpayAcceptedCrypto.map((option) => {
             return (
@@ -68,12 +97,14 @@ export const CreateRecordForm = ({ handleSubmit }: CreateRecordFormProps) => {
       <div className="p-3 text-sm text-gray-800 col-span-2 max-w-[140px]">
         <input
           type="number"
-          name="amountInCurrency"
+          name="amountInvoicedAsCurrency"
           placeholder="Amount"
           className={
             "py-1 px-2 rounded placeholder:uppercase placeholder:text-xs w-full"
           }
           required
+          onChange={formik.handleChange}
+          value={formik.values.amountInvoicedAsCurrency}
         />
       </div>
       <div className="py-3 px-4 text-sm text-gray-800 ">
