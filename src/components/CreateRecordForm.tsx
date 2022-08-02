@@ -4,7 +4,7 @@ import { MerchantTransaction } from "../models/MerchantTransaction";
 
 interface CreateRecordFormProps {
   records: MerchantTransaction[];
-  setRecords: any;
+  setRecords: (record: MerchantTransaction[]) => void;
   currency: string;
 }
 
@@ -19,12 +19,12 @@ export const CreateRecordForm = ({
       name: "",
       item: "",
       cryptoCurrencyForPayment: "BTC",
-      amountInvoicedAsCurrency: "",
-      currency: currency,
+      amountInvoicedAsCurrency: 0,
     },
     onSubmit: (values, { resetForm }) => {
       const id = { id: "id" + new Date().getTime() };
-      setRecords([...records, { ...id, ...values }]);
+      const currencyCode = { currencyCode: currency };
+      setRecords([...records, { ...id, ...currencyCode, ...values }]);
       resetForm();
     },
   });

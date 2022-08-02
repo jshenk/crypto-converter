@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 interface InlineRecordFormProps extends MerchantTransaction {
   setViewState: (view: "display" | "edit") => void;
   id: string;
-  setRecords: any;
+  setRecords: (transaction: any) => void;
 }
 
 /** Edit a single merchant record. */
@@ -26,7 +26,7 @@ export const InlineRecordForm = ({
       amountInvoicedAsCurrency: amountInvoicedAsCurrency,
     },
     onSubmit: (values) => {
-      setRecords((currenRecords: any[]) =>
+      setRecords((currenRecords: MerchantTransaction[]) =>
         currenRecords.map((currentRecord: { id: string }) => {
           if (currentRecord.id === id) {
             return { ...currentRecord, ...values };
